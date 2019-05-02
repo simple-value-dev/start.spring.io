@@ -26,6 +26,7 @@ import io.spring.initializr.generator.spring.build.gradle.ConditionalOnGradleVer
 import io.spring.initializr.metadata.InitializrMetadata;
 import io.spring.start.site.extension.springcloud.SpringCloudProjectGenerationConfiguration;
 import io.spring.start.site.extension.springrestdocs.SpringRestDocsProjectGenerationConfiguration;
+import io.spring.start.site.extension.svc.SimpleBootCustomConfiguration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
@@ -39,7 +40,8 @@ import org.springframework.context.annotation.Import;
  */
 @ProjectGenerationConfiguration
 @Import({ SpringCloudProjectGenerationConfiguration.class,
-		SpringRestDocsProjectGenerationConfiguration.class })
+		SpringRestDocsProjectGenerationConfiguration.class,
+		SimpleBootCustomConfiguration.class })
 public class StartProjectGenerationConfiguration {
 
 	private final InitializrMetadata metadata;

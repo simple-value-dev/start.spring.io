@@ -20,18 +20,25 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>io.spring.initializr</groupId>
+			<artifactId>initializr-generator</artifactId>
+			<version>0.8.0.BUILD-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>io.spring.initializr</groupId>
 			<artifactId>initializr-generator-spring</artifactId>
+			<version>0.8.0.BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>io.spring.initializr</groupId>
 			<artifactId>initializr-web</artifactId>
+			<version>0.8.0.BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>io.spring.initializr</groupId>
 			<artifactId>initializr-actuator</artifactId>
+			<version>0.8.0.BUILD-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

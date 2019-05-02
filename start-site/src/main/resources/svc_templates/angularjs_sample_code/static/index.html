@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SVC sample app</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="external_libraries/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/custom-bootstrap.css">
+<style type="text/css">
+</style>
+
+
+</head>
+ <body ng-app="sample-app">
+		<div ng-controller="homeController as homeCtrl" ng-cloak="" id="wrap">
+		<div class="container">
+			<header role="banner">
+				<h4>
+					{{homeCtrl.bannerHeader.primary}} <small>{{homeCtrl.bannerHeader.secondary}}</small>
+				</h4>
+			</header><base href="/">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="{{homeCtrl.brandingData.href}}">{{homeCtrl.brandingData.brandNameContents}}</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<simple-nav-bar nav-bar-data="homeCtrl.leftNavBarConents" 
+						                href-click-handler="homeCtrl.homePageNavigator"> 
+						</simple-nav-bar>
+						<simple-nav-bar nav-bar-side="right" nav-bar-data="homeCtrl.rightNavBarConents"> </simple-nav-bar>
+					</div>
+				</div>
+			</nav>
+			<div ng-if="sessionExpired">
+				<div class="alert alert-info" >
+					<a href="" class="close" data-dismiss="alert" aria-label="close">×</a>
+					<strong>Session Expired</strong>  your session has expired please login again!!!
+				</div>
+			</div>
+			<div ng-class="homeCtrl.favorites != undefined 
+							|| homeCtrl.menuTreeNodes != undefined ? 'row' : ''">
+				<div ng-class="homeCtrl.favorites != undefined 
+							|| homeCtrl.menuTreeNodes != undefined ? 'col-md-3' : ''">
+					<div ng-if="homeCtrl.favorites != undefined" class='nav-list-main-scrollable-div'>
+						<ul class='nav nav-list-main' style=''>
+							<li><label class='nav-toggle nav-header'>
+									<span class='nav-toggle-icon glyphicon glyphicon-chevron-right'>
+										<a>Favorite</a>
+									</span>
+								</label>
+								<ul class='nav nav-list nav-left-ml'
+									style='overflow: auto;
+									height: 100px;'>
+									<menu-tree-structure menu-nodes="homeCtrl.favorites"></menu-tree-structure>
+								</ul>
+							</li>
+							<li><a class='openInIFrame' href='#/configure_favorites.html'>Configure favorites</a></li>
+						</ul>
+					</div>
+					<div ng-if="homeCtrl.menuTreeNodes != undefined" class="lower">
+						<ul class="nav nav-list-main">
+						  <menu-tree-structure menu-nodes="homeCtrl.menuTreeNodes" href-click-handler="homeCtrl.homePageNavigator"> </menu-tree-structure>
+						</ul>
+					</div>
+				</div>
+				<div ng-class=''>
+					<marquee ng-if="homeCtrl.user != undefined && homeCtrl.user.isRootAdmin" style="color: #a94442">
+						You have logged in as root admin </marquee>
+					<div class="embed-responsive embed-responsive-4by3" ng-view=""></div>
+				</div>
+			</div>
+			<footer class="footer">
+				<p>&copy;Simple Value Creations Private Limited</p>
+			</footer>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="external_libraries/jquery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="common/js/custom_bootstrap.js"></script>
+<script type="text/javascript" src="external_libraries/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/angular.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/external/xml2json.min.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/angular-route.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/angular-resource.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/angular-messages.min.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/moment.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/ui-bootstrap-tpls-2.1.3.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/external/xml2json.min.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/angular-cookies.min.js"></script>
+<script type="text/javascript" src="external_libraries/angularjs/external/angular-spinner.min.js"></script>
+<script type="text/javascript" src="common/directives/spinner-directive.js"></script>
+<script type="text/javascript" src="common/js/app_constants.js"></script>
+<script type="text/javascript" src="common/directives/spa_home.js"></script>
+<script type="text/javascript" src="common/directives/alert_manager.js"></script>
+<script type="text/javascript" src="common/directives/minMaxDateDirective.js"></script>
+
+<script type="text/javascript" src="home_controller.js"></script>
+
+<script type="text/javascript" src="routes/login/login_controller.js"></script>
+<script type="text/javascript" src="routes/login/login_api.js"></script>
+</html>

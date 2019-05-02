@@ -1,0 +1,11 @@
+<li class="dropdown">
+	<a class="dropdown-toggle" data-toggle="dropdown">{{dropDownData.name}}<span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		<li ng-repeat="dropDownMenu in dropDownData.dropDownMenus">
+			<a href="{{dropDownMenu.href}}">
+				{{dropDownMenu.name}}
+				<span ng-if="dropDownMenu.isSlected" class="glyphicon {{dropDownMenu.selectionGlyphicon}}">
+			</a>
+		</li>
+	</ul>
+</li>

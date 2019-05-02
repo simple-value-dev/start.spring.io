@@ -1,0 +1,58 @@
+<div class="jumbotron">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-9">
+				<h1 ng-if="userType == undefined">Sample application</h1>
+				<div ng-if="userType != undefined">
+					<div class="well">
+						<h2>{{constants.UserTypeToGlossary[userType]}} login</h2>
+						<form ng-submit="loginCtrl.doLogin()" class="form-horizontal" role = "form"> 
+							<div class="form-group">
+				        		<label class="control-label col-sm-4">Email/Registered Mobile Number(RMN)</label>
+						     <div class="col-sm-8 req">
+						     	<input 
+						     		type="text"
+						     		ng-model="loginCtrl.userBean.username"
+						     		placeholder="Email/RMN"
+						     		size="25"
+						     		maxlength="45" 
+						     		req="req"
+						     		class = "form-control"/> 
+						     </div>
+				         </div>
+						 <div class="form-group">
+				        	<label class="control-label col-sm-4">Password</label>
+						    <div class="col-sm-8 req"> 
+						     	<input 
+						     		type="password"
+						     	 	size="8"
+						     	 	ng-model="loginCtrl.userBean.password"
+						     	 	placeholder="Password" 
+						     	 	class = "form-control"
+						     	 	maxlength="8" 
+						     	 	req="req"/>
+						      </div>
+				         </div>
+							<br>
+							<div class="form-group">
+						     <div class="col-sm-6">
+					 		  	<input type="reset"  value="Reset" />
+					 		  	<input type="submit"  value="Login"/>					 		
+					 		  	<br>
+					 		  	 <a href="">Forgot password?</a>  
+					 		 </div>
+				         </div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="well well-sm">
+					<ul class="nav nav-pills nav-stacked">
+					  	<li role="presentation"><a href="#" ng-click="setUserType('admin')">Admin Login</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
