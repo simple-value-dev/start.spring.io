@@ -129,6 +129,16 @@
                     <div class="control"><label>{{addSampleUI.title}}</label>
                         <input class="control" id="addSampleUI" type="checkbox" name="addSampleUI" checked="{{#addSampleUI}}checked{{/addSampleUI}}" tabindex="2">
                     </div>
+                    <div id="applyScaffoldingScriptsDiv" style="display:none" class="control"><label>{{applyScaffoldingScripts.title}}</label>
+                        <input class="control" id="applyScaffoldingScripts" type="checkbox" name="applyScaffoldingScripts" checked="{{#applyScaffoldingScripts}}checked{{/applyScaffoldingScripts}}" tabindex="2">
+                        <div id="fileUploadDiv" style="display:block" class="control"><label>{{databaseSQLFile.title}}</label>
+	                        <input class="control" accept=".sql" id="databaseSQLFile" type="file" name="databaseSQLFile" checked="{{#databaseSQLFile}}checked{{/databaseSQLFile}}" tabindex="2">
+	                        <div class="upload-response">
+		                        <div id="fileUploadError"></div>
+		                        <div id="fileUploadSuccess"></div>
+		                    </div>
+		               </div>
+                    </div>
                 </div>
              </div>
         </div>

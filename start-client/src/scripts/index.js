@@ -123,5 +123,45 @@ $(function () {
         $('#btn-generate span.shortcut').html(' alt + &#9166;');
     }
 
+    $("a[data-value='maven-project']").on('click', function() {
+   		$('div[id="applyScaffoldingScriptsDiv"]').hide();
+    });
+
+    $("a[data-value='gradle-project']").on('click', function() {
+    	$('div[id="applyScaffoldingScriptsDiv"]').show();
+    });
+
+    $("input[id='applyScaffoldingScripts']").on("change", function() {
+    	if($(this).is(':checked')){
+    		$('#fileUploadDiv').show()
+    	}else{
+    		$('#fileUploadDiv').hide()
+    		$('#databaseSQLFile').val('');
+    	}
+    });
+
+    $("input[name='databaseSQLFile']").on("change", function() {
+        var formData = new FormData();
+        formData.append("file", this.files[0]);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/uploadDatabaseSqlFile");
+
+        xhr.onload = function() {
+            var response = xhr.responseText
+            if(xhr.status == 200) {
+            	$('#fileUploadError').hide();
+                $('#fileUploadSuccess').html("<p>File Uploaded Successfully.</p>");
+                $('#fileUploadSuccess').show();
+            } else {
+            	$('#fileUploadSuccess').hide();
+                $('#fileUploadError').html((response) || "Some Error Occurred");
+                $('#fileUploadError').show();
+            }
+        }
+
+        xhr.send(formData);
+    });
+    
     applyParams();
 });

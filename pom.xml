@@ -172,6 +172,14 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>svc_maven_repo</id>
+			<name>svc_maven_repo</name>
+			<url>http://192.168.5.101:8081/artifactory/svc_maven_repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 </project>

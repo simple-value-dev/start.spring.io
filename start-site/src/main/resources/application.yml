@@ -8,6 +8,7 @@ logging:
     org.springframework.jndi: warn
 
 server:
+  port: ${port:9000}
   compression:
     enabled: true
     mime-types: application/json,text/css,text/html
@@ -156,6 +157,9 @@ initializr:
       svc_maven_repo:
         name: svc_maven_repo
         url: http://192.168.5.101:8081/artifactory/svc_maven_repo/
+      mvn_repository:
+        name: mvn_repository
+        url: https://mvnrepository.com/artifact/
   dependencies:
     - name: Core
       content:
@@ -1214,48 +1218,87 @@ initializr:
           versionRange: "[1.5.0.RELEASE,2.0.0.M1)"
           groupId: org.springframework.boot
           artifactId: spring-boot-actuator-docs
-    - name: uiconfig_lib
+    - name: svc-custom-libs
       content:
-          - name: uiconfig_lib
-            groupId: com.svc.svc_core.common_libs.java.ui_config_lib
-            artifactId: git_uiconfig_lib
-            version: 0.0.2
-            repository: svc_maven_repo
-    - name: oauth_access_token_url
+        - name: uiconfig_lib
+          id: uiconfig_lib
+          groupId: com.svc.svc_core.common_libs.java.ui_config_lib
+          artifactId: git_uiconfig_lib
+          version: 0.0.2
+          repository: svc_maven_repo
+        - name: oauth_access_token_url
+          id: oauth_access_token_url
+          groupId: com.svc.svc_core.oauth_access_token_url
+          artifactId: git_oauth_access_token_url
+          version: 0.0.1
+          repository: svc_maven_repo
+        - name: actuator_extension
+          id: actuator_extension
+          groupId: com.svc.svc_core.common_libs.java
+          artifactId: actuator_extension
+          version: 0.0.1
+          repository: svc_maven_repo
+        - name: bugzilla_access
+          id: bugzilla_access
+          groupId: com.svc.svc_core.common_libs.java.bugzilla_acces
+          artifactId: git_bugzilla_access
+          version: 0.0.1
+          repository: svc_maven_repo
+        - name: common_misc_lib
+          id: common_misc_lib
+          groupId: com.svc.svc_core.common_libs.java.common_misc_lib
+          artifactId: common_misc_lib
+          version: 0.0.1
+          repository: svc_maven_repo
+        - name: navigation_scope_builder
+          id: navigation_scope_builder
+          groupId: com.svc.svc_core.common_libs.java
+          artifactId: navigation_scope_builder
+          version: 0.0.1
+          repository: svc_maven_repo
+        - name: gradle_custom_plugins
+          id: gradle_custom_plugins
+          groupId: com.svc.svc_core.common_libs.gradle.custom_plugins
+          artifactId: gradle_custom_plugins
+          version: 0.0.1
+          repository: svc_maven_repo
+    - name: svc-commonly-used-maven-libs
       content:
-          - name: oauth_access_token_url
-            groupId: com.svc.svc_core.oauth_access_token_url
-            artifactId: git_oauth_access_token_url
-            version: 0.0.1
-            repository: svc_maven_repo
-    - name: actuator_extension
-      content:
-          - name: actuator_extension
-            groupId: com.svc.svc_core.common_libs.java
-            artifactId: actuator_extension
-            version: 0.0.1
-            repository: svc_maven_repo
-    - name: bugzilla_access
-      content:
-          - name: bugzilla_access
-            groupId: com.svc.svc_core.common_libs.java.bugzilla_acces
-            artifactId: git_bugzilla_access
-            version: 0.0.1
-            repository: svc_maven_repo
-    - name: common_misc_lib
-      content:
-          - name: common_misc_lib
-            groupId: com.svc.svc_core.common_libs.java.common_misc_lib
-            artifactId: common_misc_lib
-            version: 0.0.1
-            repository: svc_maven_repo
-    - name: navigation_scope_builder
-      content:
-          - name: navigation_scope_builder
-            groupId: com.svc.svc_core.common_libs.java
-            artifactId: navigation_scope_builder
-            version: 0.0.1
-            repository: svc_maven_repo
+        - name: commons-dbcp
+          id: commons-dbcp
+          groupId: commons-dbcp
+          artifactId: commons-dbcp
+          version: 1.4
+          description: Commons Database Connection Pooling
+          repository: mvn_repository
+        - name: spring-boot-starter-jdbc
+          id: spring-boot-starter-jdbc
+          groupId: org.springframework.boot
+          artifactId: spring-boot-starter-jdbc
+          version: 2.1.5.RELEASE
+          description: Starter for using JDBC with the HikariCP connection pool
+          repository: mvn_repository  
+        - name: spring-security-oauth2
+          id: spring-security-oauth2
+          groupId: org.springframework.security.oauth
+          artifactId: spring-security-oauth2
+          version: 2.3.5.RELEASE
+          description: Starter for using JDBC with the HikariCP connection pool
+          repository: mvn_repository  
+        - name: spring-boot-autoconfigure
+          id: spring-boot-autoconfigure
+          groupId: org.springframework.boot
+          artifactId: spring-boot-autoconfigure
+          version: 2.1.5.RELEASE
+          description: Spring Boot AutoConfigure
+          repository: mvn_repository   
+        - name: tomcat-jdbc
+          id: tomcat-jdbc
+          groupId: org.apache.tomcat
+          artifactId: tomcat-jdbc
+          version: 9.0.20
+          description: Tomcat JDBC Pool Package
+          repository: mvn_repository   
   types:
     - name: Maven Project
       id: maven-project
